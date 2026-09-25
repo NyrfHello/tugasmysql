@@ -1,0 +1,296 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Sep 25, 2026 at 05:47 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `db_revisi`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `detail_transaksi`
+--
+
+CREATE TABLE `detail_transaksi` (
+  `id_detail` int(11) NOT NULL,
+  `no_transaksi` varchar(50) DEFAULT NULL,
+  `kode_produk` varchar(100) NOT NULL,
+  `kuantitas` decimal(10,2) NOT NULL,
+  `harga_satuan` decimal(15,2) NOT NULL,
+  `subtotal` decimal(15,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `detail_transaksi`
+--
+
+INSERT INTO `detail_transaksi` (`id_detail`, `no_transaksi`, `kode_produk`, `kuantitas`, `harga_satuan`, `subtotal`) VALUES
+(1, 'TRX-1001', 'P004', 1.00, 15000.00, 15000.00),
+(2, 'TRX-1001', 'P005', 1.00, 20000.00, 20000.00),
+(3, 'TRX-1001', 'P003', 2.00, 5000.00, 10000.00),
+(4, 'TRX-1002', 'P007', 1.00, 65000.00, 65000.00),
+(5, 'TRX-1002', 'P005', 2.00, 20000.00, 40000.00),
+(6, 'TRX-1002', 'P004', 1.00, 15000.00, 15000.00),
+(7, 'TRX-1003', 'P007', 1.00, 65000.00, 65000.00),
+(8, 'TRX-1003', 'P008', 1.00, 8500.00, 8500.00),
+(9, 'TRX-1003', 'P009', 1.00, 2000.00, 2000.00),
+(10, 'TRX-1004', 'P004', 1.00, 15000.00, 15000.00),
+(11, 'TRX-1005', 'P007', 3.00, 65000.00, 195000.00),
+(12, 'TRX-1005', 'P003', 3.00, 5000.00, 15000.00),
+(13, 'TRX-1006', 'P004', 1.00, 15000.00, 15000.00),
+(14, 'TRX-1006', 'P005', 2.00, 20000.00, 40000.00),
+(15, 'TRX-1007', 'P007', 1.00, 65000.00, 65000.00),
+(16, 'TRX-1007', 'P005', 1.00, 20000.00, 20000.00),
+(17, 'TRX-1007', 'P002', 1.00, 4000.00, 4000.00),
+(18, 'TRX-1008', 'P005', 1.00, 20000.00, 20000.00),
+(19, 'TRX-1008', 'P006', 1.00, 14000.00, 14000.00),
+(20, 'TRX-1009', 'P007', 6.00, 65000.00, 390000.00),
+(21, 'TRX-1009', 'P005', 3.00, 20000.00, 60000.00),
+(22, 'TRX-1010', 'P010', 1.00, 12500.00, 12500.00);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `perusahaan`
+--
+
+CREATE TABLE `perusahaan` (
+  `id_perusahaan` int(11) NOT NULL,
+  `nama_perusahaan` varchar(100) NOT NULL,
+  `alamat` varchar(255) DEFAULT NULL,
+  `no_telepon` varchar(20) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `website` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `perusahaan`
+--
+
+INSERT INTO `perusahaan` (`id_perusahaan`, `nama_perusahaan`, `alamat`, `no_telepon`, `email`, `website`) VALUES
+(1, 'Cabang Bandung', 'Jl. Braga No. 1', '022-123456', 'admin@bdg.com', 'www.perusahaanbdg.com'),
+(2, 'Cabang Jakarta', 'Jl. Sudirman No. 2', '021-123456', 'admin@jkt.com', 'www.perusahaanjkt.com'),
+(3, 'Cabang Surabaya', 'Jl. Pemuda No. 3', '031-123456', 'admin@sby.com', 'www.perusahaansby.com');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `produk`
+--
+
+CREATE TABLE `produk` (
+  `kode_produk` varchar(20) NOT NULL,
+  `nama_produk` varchar(100) NOT NULL,
+  `harga_satuan` decimal(15,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `produk`
+--
+
+INSERT INTO `produk` (`kode_produk`, `nama_produk`, `harga_satuan`) VALUES
+('P001', 'Indomie Goreng', 3000.00),
+('P002', 'Aqua Botol 600ml', 4000.00),
+('P003', 'Teh Pucuk Harum', 5000.00),
+('P004', 'Roti Tawar Sari Roti', 15000.00),
+('P005', 'Minyak Goreng Bimoli 1L', 20000.00),
+('P006', 'Gula Pasir Gulaku 1kg', 14000.00),
+('P007', 'Beras Pandan Wangi 5kg', 65000.00),
+('P008', 'Sunlight Pencuci Piring', 8500.00),
+('P009', 'Kopi Kapal Api Sachet', 2000.00),
+('P010', 'Pasta Gigi Pepsodent', 12500.00);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `stok_bulanan`
+--
+
+CREATE TABLE `stok_bulanan` (
+  `id_stok` int(11) NOT NULL,
+  `id_perusahaan` int(11) DEFAULT NULL,
+  `kode_produk` varchar(20) DEFAULT NULL,
+  `periode_bulan` varchar(20) DEFAULT NULL,
+  `tahun` year(4) DEFAULT NULL,
+  `jumlah_awal` int(11) DEFAULT 0,
+  `pemasukan` int(11) DEFAULT 0,
+  `pengeluaran` int(11) DEFAULT 0,
+  `jumlah_akhir` int(11) DEFAULT 0,
+  `nilai_stok_akhir` decimal(15,2) DEFAULT 0.00
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `stok_bulanan`
+--
+
+INSERT INTO `stok_bulanan` (`id_stok`, `id_perusahaan`, `kode_produk`, `periode_bulan`, `tahun`, `jumlah_awal`, `pemasukan`, `pengeluaran`, `jumlah_akhir`, `nilai_stok_akhir`) VALUES
+(1, 1, 'P001', 'September', '2026', 150, 100, 0, 250, 750000.00),
+(2, 1, 'P002', 'September', '2026', 120, 80, 0, 200, 800000.00),
+(3, 1, 'P003', 'September', '2026', 100, 60, 5, 155, 775000.00),
+(4, 1, 'P004', 'September', '2026', 40, 30, 2, 68, 1020000.00),
+(5, 1, 'P005', 'September', '2026', 50, 30, 4, 76, 1520000.00),
+(6, 1, 'P006', 'September', '2026', 45, 25, 1, 69, 966000.00),
+(7, 1, 'P007', 'September', '2026', 30, 20, 4, 46, 2990000.00),
+(8, 1, 'P008', 'September', '2026', 35, 20, 0, 55, 467500.00),
+(9, 1, 'P009', 'September', '2026', 200, 150, 0, 350, 700000.00),
+(10, 1, 'P010', 'September', '2026', 50, 25, 0, 75, 937500.00),
+(11, 2, 'P001', 'September', '2026', 150, 100, 0, 250, 750000.00),
+(12, 2, 'P002', 'September', '2026', 120, 80, 0, 200, 800000.00),
+(13, 2, 'P003', 'September', '2026', 100, 60, 0, 160, 800000.00),
+(14, 2, 'P004', 'September', '2026', 40, 30, 1, 69, 1035000.00),
+(15, 2, 'P005', 'September', '2026', 50, 30, 5, 75, 1500000.00),
+(16, 2, 'P006', 'September', '2026', 45, 25, 0, 70, 980000.00),
+(17, 2, 'P007', 'September', '2026', 30, 20, 7, 43, 2795000.00),
+(18, 2, 'P008', 'September', '2026', 35, 20, 1, 54, 459000.00),
+(19, 2, 'P009', 'September', '2026', 200, 150, 1, 349, 698000.00),
+(20, 2, 'P010', 'September', '2026', 50, 25, 0, 75, 937500.00),
+(21, 3, 'P001', 'September', '2026', 150, 100, 0, 250, 750000.00),
+(22, 3, 'P002', 'September', '2026', 120, 80, 1, 199, 796000.00),
+(23, 3, 'P003', 'September', '2026', 100, 60, 0, 160, 800000.00),
+(24, 3, 'P004', 'September', '2026', 40, 30, 1, 69, 1035000.00),
+(25, 3, 'P005', 'September', '2026', 50, 30, 1, 79, 1580000.00),
+(26, 3, 'P006', 'September', '2026', 45, 25, 0, 70, 980000.00),
+(27, 3, 'P007', 'September', '2026', 30, 20, 1, 49, 3185000.00),
+(28, 3, 'P008', 'September', '2026', 35, 20, 0, 55, 467500.00),
+(29, 3, 'P009', 'September', '2026', 200, 150, 0, 350, 700000.00),
+(30, 3, 'P010', 'September', '2026', 50, 25, 1, 74, 925000.00);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transaksi`
+--
+
+CREATE TABLE `transaksi` (
+  `no_transaksi` varchar(50) NOT NULL,
+  `id_perusahaan` int(11) DEFAULT NULL,
+  `tanggal_waktu` datetime NOT NULL,
+  `nama_kasir` varchar(50) NOT NULL,
+  `pelanggan` varchar(50) DEFAULT 'UMUM/CASH',
+  `total_bayar` decimal(15,2) NOT NULL,
+  `tunai` decimal(15,2) NOT NULL,
+  `kembalian` decimal(15,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `transaksi`
+--
+
+INSERT INTO `transaksi` (`no_transaksi`, `id_perusahaan`, `tanggal_waktu`, `nama_kasir`, `pelanggan`, `total_bayar`, `tunai`, `kembalian`) VALUES
+('TRX-1001', 1, '2026-09-25 08:15:00', 'Risa', 'Umum', 45000.00, 50000.00, 5000.00),
+('TRX-1002', 1, '2026-09-25 08:30:22', 'Risa', 'Andi', 120000.00, 150000.00, 30000.00),
+('TRX-1003', 2, '2026-09-25 09:00:10', 'Bima', 'Siti', 75500.00, 100000.00, 24500.00),
+('TRX-1004', 3, '2026-09-25 09:15:45', 'Tika', 'Umum', 15000.00, 20000.00, 5000.00),
+('TRX-1005', 1, '2026-09-25 09:45:30', 'Risa', 'Budi', 210000.00, 250000.00, 40000.00),
+('TRX-1006', 2, '2026-09-25 10:05:15', 'Bima', 'Clara', 55000.00, 100000.00, 45000.00),
+('TRX-1007', 3, '2026-09-25 10:20:50', 'Tika', 'Deni', 89000.00, 100000.00, 11000.00),
+('TRX-1008', 1, '2026-09-25 10:45:12', 'Risa', 'Umum', 34000.00, 50000.00, 16000.00),
+('TRX-1009', 2, '2026-09-25 11:10:05', 'Bima', 'Eka', 450000.00, 500000.00, 50000.00),
+('TRX-1010', 3, '2026-09-25 11:30:40', 'Tika', 'Fajar', 12500.00, 20000.00, 7500.00),
+('TRX-1011', 3, '2026-09-25 12:00:00', 'Joko', 'Umum', 67000.00, 100000.00, 33000.00);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `detail_transaksi`
+--
+ALTER TABLE `detail_transaksi`
+  ADD PRIMARY KEY (`id_detail`),
+  ADD KEY `no_transaksi` (`no_transaksi`),
+  ADD KEY `kode_produk` (`kode_produk`);
+
+--
+-- Indexes for table `perusahaan`
+--
+ALTER TABLE `perusahaan`
+  ADD PRIMARY KEY (`id_perusahaan`);
+
+--
+-- Indexes for table `produk`
+--
+ALTER TABLE `produk`
+  ADD PRIMARY KEY (`kode_produk`);
+
+--
+-- Indexes for table `stok_bulanan`
+--
+ALTER TABLE `stok_bulanan`
+  ADD PRIMARY KEY (`id_stok`),
+  ADD KEY `id_perusahaan` (`id_perusahaan`),
+  ADD KEY `kode_produk` (`kode_produk`);
+
+--
+-- Indexes for table `transaksi`
+--
+ALTER TABLE `transaksi`
+  ADD PRIMARY KEY (`no_transaksi`),
+  ADD KEY `id_perusahaan` (`id_perusahaan`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `detail_transaksi`
+--
+ALTER TABLE `detail_transaksi`
+  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT for table `perusahaan`
+--
+ALTER TABLE `perusahaan`
+  MODIFY `id_perusahaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `stok_bulanan`
+--
+ALTER TABLE `stok_bulanan`
+  MODIFY `id_stok` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `detail_transaksi`
+--
+ALTER TABLE `detail_transaksi`
+  ADD CONSTRAINT `detail_transaksi_ibfk_1` FOREIGN KEY (`no_transaksi`) REFERENCES `transaksi` (`no_transaksi`),
+  ADD CONSTRAINT `detail_transaksi_ibfk_2` FOREIGN KEY (`kode_produk`) REFERENCES `produk` (`kode_produk`);
+
+--
+-- Constraints for table `stok_bulanan`
+--
+ALTER TABLE `stok_bulanan`
+  ADD CONSTRAINT `stok_bulanan_ibfk_1` FOREIGN KEY (`id_perusahaan`) REFERENCES `perusahaan` (`id_perusahaan`),
+  ADD CONSTRAINT `stok_bulanan_ibfk_2` FOREIGN KEY (`kode_produk`) REFERENCES `produk` (`kode_produk`);
+
+--
+-- Constraints for table `transaksi`
+--
+ALTER TABLE `transaksi`
+  ADD CONSTRAINT `transaksi_ibfk_1` FOREIGN KEY (`id_perusahaan`) REFERENCES `perusahaan` (`id_perusahaan`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
