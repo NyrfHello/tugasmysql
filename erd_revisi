@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 25, 2026 at 05:47 AM
+-- Generation Time: Sep 25, 2026 at 06:22 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -29,8 +29,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `detail_transaksi` (
   `id_detail` int(11) NOT NULL,
-  `no_transaksi` varchar(50) DEFAULT NULL,
-  `kode_produk` varchar(100) NOT NULL,
+  `no_transaksi` varchar(50) NOT NULL,
+  `kode_produk` varchar(20) NOT NULL,
   `kuantitas` decimal(10,2) NOT NULL,
   `harga_satuan` decimal(15,2) NOT NULL,
   `subtotal` decimal(15,2) NOT NULL
@@ -124,8 +124,8 @@ INSERT INTO `produk` (`kode_produk`, `nama_produk`, `harga_satuan`) VALUES
 
 CREATE TABLE `stok_bulanan` (
   `id_stok` int(11) NOT NULL,
-  `id_perusahaan` int(11) DEFAULT NULL,
-  `kode_produk` varchar(20) DEFAULT NULL,
+  `id_perusahaan` int(11) NOT NULL,
+  `kode_produk` varchar(20) NOT NULL,
   `periode_bulan` varchar(20) DEFAULT NULL,
   `tahun` year(4) DEFAULT NULL,
   `jumlah_awal` int(11) DEFAULT 0,
@@ -275,7 +275,7 @@ ALTER TABLE `stok_bulanan`
 --
 ALTER TABLE `detail_transaksi`
   ADD CONSTRAINT `detail_transaksi_ibfk_1` FOREIGN KEY (`no_transaksi`) REFERENCES `transaksi` (`no_transaksi`),
-  ADD CONSTRAINT `detail_transaksi_ibfk_2` FOREIGN KEY (`kode_produk`) REFERENCES `produk` (`kode_produk`);
+  ADD CONSTRAINT `fk_detail_kode_produk` FOREIGN KEY (`kode_produk`) REFERENCES `produk` (`kode_produk`);
 
 --
 -- Constraints for table `stok_bulanan`
