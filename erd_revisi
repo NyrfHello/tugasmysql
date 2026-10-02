@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 25, 2026 at 06:22 AM
+-- Generation Time: Oct 02, 2026 at 09:23 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_revisi`
+-- Database: `db_revisi_lagi`
 --
 
 -- --------------------------------------------------------
@@ -31,6 +31,7 @@ CREATE TABLE `detail_transaksi` (
   `id_detail` int(11) NOT NULL,
   `no_transaksi` varchar(50) NOT NULL,
   `kode_produk` varchar(20) NOT NULL,
+  `nama_produk` varchar(100) NOT NULL,
   `kuantitas` decimal(10,2) NOT NULL,
   `harga_satuan` decimal(15,2) NOT NULL,
   `subtotal` decimal(15,2) NOT NULL
@@ -40,29 +41,80 @@ CREATE TABLE `detail_transaksi` (
 -- Dumping data for table `detail_transaksi`
 --
 
-INSERT INTO `detail_transaksi` (`id_detail`, `no_transaksi`, `kode_produk`, `kuantitas`, `harga_satuan`, `subtotal`) VALUES
-(1, 'TRX-1001', 'P004', 1.00, 15000.00, 15000.00),
-(2, 'TRX-1001', 'P005', 1.00, 20000.00, 20000.00),
-(3, 'TRX-1001', 'P003', 2.00, 5000.00, 10000.00),
-(4, 'TRX-1002', 'P007', 1.00, 65000.00, 65000.00),
-(5, 'TRX-1002', 'P005', 2.00, 20000.00, 40000.00),
-(6, 'TRX-1002', 'P004', 1.00, 15000.00, 15000.00),
-(7, 'TRX-1003', 'P007', 1.00, 65000.00, 65000.00),
-(8, 'TRX-1003', 'P008', 1.00, 8500.00, 8500.00),
-(9, 'TRX-1003', 'P009', 1.00, 2000.00, 2000.00),
-(10, 'TRX-1004', 'P004', 1.00, 15000.00, 15000.00),
-(11, 'TRX-1005', 'P007', 3.00, 65000.00, 195000.00),
-(12, 'TRX-1005', 'P003', 3.00, 5000.00, 15000.00),
-(13, 'TRX-1006', 'P004', 1.00, 15000.00, 15000.00),
-(14, 'TRX-1006', 'P005', 2.00, 20000.00, 40000.00),
-(15, 'TRX-1007', 'P007', 1.00, 65000.00, 65000.00),
-(16, 'TRX-1007', 'P005', 1.00, 20000.00, 20000.00),
-(17, 'TRX-1007', 'P002', 1.00, 4000.00, 4000.00),
-(18, 'TRX-1008', 'P005', 1.00, 20000.00, 20000.00),
-(19, 'TRX-1008', 'P006', 1.00, 14000.00, 14000.00),
-(20, 'TRX-1009', 'P007', 6.00, 65000.00, 390000.00),
-(21, 'TRX-1009', 'P005', 3.00, 20000.00, 60000.00),
-(22, 'TRX-1010', 'P010', 1.00, 12500.00, 12500.00);
+INSERT INTO `detail_transaksi` (`id_detail`, `no_transaksi`, `kode_produk`, `nama_produk`, `kuantitas`, `harga_satuan`, `subtotal`) VALUES
+(1, 'TRX-1001', 'P004', 'Roti Sobek ', 1.00, 15000.00, 15000.00),
+(2, 'TRX-1001', 'P005', 'Minyak Goreng Bimoli 1L', 1.00, 20000.00, 20000.00),
+(3, 'TRX-1001', 'P003', 'Teh Pucuk Harum', 2.00, 5000.00, 10000.00),
+(4, 'TRX-1002', 'P007', 'Beras Pandan Wangi 5kg', 1.00, 65000.00, 65000.00),
+(5, 'TRX-1002', 'P005', 'Minyak Goreng Bimoli 1L', 2.00, 20000.00, 40000.00),
+(6, 'TRX-1002', 'P004', 'Roti Sobek ', 1.00, 15000.00, 15000.00),
+(7, 'TRX-1003', 'P007', 'Beras Pandan Wangi 5kg', 1.00, 65000.00, 65000.00),
+(8, 'TRX-1003', 'P008', 'Baking Soda', 1.00, 8500.00, 8500.00),
+(9, 'TRX-1003', 'P009', 'Kopi Kapal Api Sachet', 1.00, 2000.00, 2000.00),
+(10, 'TRX-1004', 'P004', 'Roti Sobek ', 1.00, 15000.00, 15000.00),
+(11, 'TRX-1005', 'P007', 'Beras Pandan Wangi 5kg', 3.00, 65000.00, 195000.00),
+(12, 'TRX-1005', 'P003', 'Teh Pucuk Harum', 3.00, 5000.00, 15000.00),
+(13, 'TRX-1006', 'P004', 'Roti Sobek ', 1.00, 15000.00, 15000.00),
+(14, 'TRX-1006', 'P005', 'Minyak Goreng Bimoli 1L', 2.00, 20000.00, 40000.00),
+(15, 'TRX-1007', 'P007', 'Beras Pandan Wangi 5kg', 1.00, 65000.00, 65000.00),
+(16, 'TRX-1007', 'P005', 'Minyak Goreng Bimoli 1L', 1.00, 20000.00, 20000.00),
+(17, 'TRX-1007', 'P002', 'Aqua Botol 600ml', 1.00, 4000.00, 4000.00),
+(18, 'TRX-1008', 'P005', 'Minyak Goreng Bimoli 1L', 1.00, 20000.00, 20000.00),
+(19, 'TRX-1008', 'P006', 'Gula Pasir Gulaku 1kg', 1.00, 14000.00, 14000.00),
+(20, 'TRX-1009', 'P007', 'Beras Pandan Wangi 5kg', 6.00, 65000.00, 390000.00),
+(21, 'TRX-1009', 'P005', 'Minyak Goreng Bimoli 1L', 3.00, 20000.00, 60000.00),
+(22, 'TRX-1010', 'P010', 'Pasta Gigi Pepsodent', 1.00, 12500.00, 12500.00);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kartu_stok`
+--
+
+CREATE TABLE `kartu_stok` (
+  `id_kartu_stok` int(11) NOT NULL,
+  `id_perusahaan` int(11) NOT NULL,
+  `kode_produk` varchar(20) NOT NULL,
+  `tanggal_waktu` datetime NOT NULL,
+  `jenis_mutasi` enum('Masuk','Keluar','Penyesuaian') NOT NULL,
+  `kuantitas` decimal(10,2) NOT NULL,
+  `no_transaksi` varchar(50) DEFAULT NULL,
+  `keterangan` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `kartu_stok`
+--
+
+INSERT INTO `kartu_stok` (`id_kartu_stok`, `id_perusahaan`, `kode_produk`, `tanggal_waktu`, `jenis_mutasi`, `kuantitas`, `no_transaksi`, `keterangan`) VALUES
+(1, 1, 'P004', '2026-09-25 08:15:00', 'Keluar', 1.00, 'TRX-1001', 'Penjualan ke Umum'),
+(2, 1, 'P005', '2026-09-25 08:15:00', 'Keluar', 1.00, 'TRX-1001', 'Penjualan ke Umum'),
+(3, 1, 'P003', '2026-09-25 08:15:00', 'Keluar', 2.00, 'TRX-1001', 'Penjualan ke Umum'),
+(4, 1, 'P007', '2026-09-25 08:30:22', 'Keluar', 1.00, 'TRX-1002', 'Penjualan ke Andi'),
+(5, 1, 'P005', '2026-09-25 08:30:22', 'Keluar', 2.00, 'TRX-1002', 'Penjualan ke Andi'),
+(6, 1, 'P004', '2026-09-25 08:30:22', 'Keluar', 1.00, 'TRX-1002', 'Penjualan ke Andi');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kasir`
+--
+
+CREATE TABLE `kasir` (
+  `id_kasir` int(11) NOT NULL,
+  `nama_kasir` varchar(50) NOT NULL,
+  `status_aktif` enum('Aktif','Non-Aktif','Pensiun','PHK') NOT NULL DEFAULT 'Aktif'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `kasir`
+--
+
+INSERT INTO `kasir` (`id_kasir`, `nama_kasir`, `status_aktif`) VALUES
+(1, 'Risa', 'Aktif'),
+(2, 'Bima', 'Aktif'),
+(3, 'Tika', 'Aktif'),
+(4, 'Joko', 'Aktif');
 
 -- --------------------------------------------------------
 
@@ -108,11 +160,11 @@ INSERT INTO `produk` (`kode_produk`, `nama_produk`, `harga_satuan`) VALUES
 ('P001', 'Indomie Goreng', 3000.00),
 ('P002', 'Aqua Botol 600ml', 4000.00),
 ('P003', 'Teh Pucuk Harum', 5000.00),
-('P004', 'Roti Tawar Sari Roti', 15000.00),
+('P004', 'Roti Sobek ', 15000.00),
 ('P005', 'Minyak Goreng Bimoli 1L', 20000.00),
 ('P006', 'Gula Pasir Gulaku 1kg', 14000.00),
 ('P007', 'Beras Pandan Wangi 5kg', 65000.00),
-('P008', 'Sunlight Pencuci Piring', 8500.00),
+('P008', 'Baking Soda', 8500.00),
 ('P009', 'Kopi Kapal Api Sachet', 2000.00),
 ('P010', 'Pasta Gigi Pepsodent', 12500.00);
 
@@ -179,9 +231,9 @@ INSERT INTO `stok_bulanan` (`id_stok`, `id_perusahaan`, `kode_produk`, `periode_
 
 CREATE TABLE `transaksi` (
   `no_transaksi` varchar(50) NOT NULL,
-  `id_perusahaan` int(11) DEFAULT NULL,
+  `id_perusahaan` int(11) NOT NULL,
+  `id_kasir` int(11) NOT NULL,
   `tanggal_waktu` datetime NOT NULL,
-  `nama_kasir` varchar(50) NOT NULL,
   `pelanggan` varchar(50) DEFAULT 'UMUM/CASH',
   `total_bayar` decimal(15,2) NOT NULL,
   `tunai` decimal(15,2) NOT NULL,
@@ -192,18 +244,18 @@ CREATE TABLE `transaksi` (
 -- Dumping data for table `transaksi`
 --
 
-INSERT INTO `transaksi` (`no_transaksi`, `id_perusahaan`, `tanggal_waktu`, `nama_kasir`, `pelanggan`, `total_bayar`, `tunai`, `kembalian`) VALUES
-('TRX-1001', 1, '2026-09-25 08:15:00', 'Risa', 'Umum', 45000.00, 50000.00, 5000.00),
-('TRX-1002', 1, '2026-09-25 08:30:22', 'Risa', 'Andi', 120000.00, 150000.00, 30000.00),
-('TRX-1003', 2, '2026-09-25 09:00:10', 'Bima', 'Siti', 75500.00, 100000.00, 24500.00),
-('TRX-1004', 3, '2026-09-25 09:15:45', 'Tika', 'Umum', 15000.00, 20000.00, 5000.00),
-('TRX-1005', 1, '2026-09-25 09:45:30', 'Risa', 'Budi', 210000.00, 250000.00, 40000.00),
-('TRX-1006', 2, '2026-09-25 10:05:15', 'Bima', 'Clara', 55000.00, 100000.00, 45000.00),
-('TRX-1007', 3, '2026-09-25 10:20:50', 'Tika', 'Deni', 89000.00, 100000.00, 11000.00),
-('TRX-1008', 1, '2026-09-25 10:45:12', 'Risa', 'Umum', 34000.00, 50000.00, 16000.00),
-('TRX-1009', 2, '2026-09-25 11:10:05', 'Bima', 'Eka', 450000.00, 500000.00, 50000.00),
-('TRX-1010', 3, '2026-09-25 11:30:40', 'Tika', 'Fajar', 12500.00, 20000.00, 7500.00),
-('TRX-1011', 3, '2026-09-25 12:00:00', 'Joko', 'Umum', 67000.00, 100000.00, 33000.00);
+INSERT INTO `transaksi` (`no_transaksi`, `id_perusahaan`, `id_kasir`, `tanggal_waktu`, `pelanggan`, `total_bayar`, `tunai`, `kembalian`) VALUES
+('TRX-1001', 1, 1, '2026-09-25 08:15:00', 'Umum', 45000.00, 50000.00, 5000.00),
+('TRX-1002', 1, 1, '2026-09-25 08:30:22', 'Andi', 120000.00, 150000.00, 30000.00),
+('TRX-1003', 2, 2, '2026-09-25 09:00:10', 'Siti', 75500.00, 100000.00, 24500.00),
+('TRX-1004', 3, 3, '2026-09-25 09:15:45', 'Umum', 15000.00, 20000.00, 5000.00),
+('TRX-1005', 1, 1, '2026-09-25 09:45:30', 'Budi', 210000.00, 250000.00, 40000.00),
+('TRX-1006', 2, 2, '2026-09-25 10:05:15', 'Clara', 55000.00, 100000.00, 45000.00),
+('TRX-1007', 3, 3, '2026-09-25 10:20:50', 'Deni', 89000.00, 100000.00, 11000.00),
+('TRX-1008', 1, 1, '2026-09-25 10:45:12', 'Umum', 34000.00, 50000.00, 16000.00),
+('TRX-1009', 2, 2, '2026-09-25 11:10:05', 'Eka', 450000.00, 500000.00, 50000.00),
+('TRX-1010', 3, 3, '2026-09-25 11:30:40', 'Fajar', 12500.00, 20000.00, 7500.00),
+('TRX-1011', 3, 4, '2026-09-25 12:00:00', 'Umum', 67000.00, 100000.00, 33000.00);
 
 --
 -- Indexes for dumped tables
@@ -216,6 +268,22 @@ ALTER TABLE `detail_transaksi`
   ADD PRIMARY KEY (`id_detail`),
   ADD KEY `no_transaksi` (`no_transaksi`),
   ADD KEY `kode_produk` (`kode_produk`);
+
+--
+-- Indexes for table `kartu_stok`
+--
+ALTER TABLE `kartu_stok`
+  ADD PRIMARY KEY (`id_kartu_stok`),
+  ADD KEY `id_perusahaan` (`id_perusahaan`),
+  ADD KEY `kode_produk` (`kode_produk`),
+  ADD KEY `no_transaksi` (`no_transaksi`),
+  ADD KEY `idx_periode` (`id_perusahaan`,`kode_produk`,`tanggal_waktu`);
+
+--
+-- Indexes for table `kasir`
+--
+ALTER TABLE `kasir`
+  ADD PRIMARY KEY (`id_kasir`);
 
 --
 -- Indexes for table `perusahaan`
@@ -242,7 +310,8 @@ ALTER TABLE `stok_bulanan`
 --
 ALTER TABLE `transaksi`
   ADD PRIMARY KEY (`no_transaksi`),
-  ADD KEY `id_perusahaan` (`id_perusahaan`);
+  ADD KEY `id_perusahaan` (`id_perusahaan`),
+  ADD KEY `id_kasir` (`id_kasir`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -253,6 +322,18 @@ ALTER TABLE `transaksi`
 --
 ALTER TABLE `detail_transaksi`
   MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT for table `kartu_stok`
+--
+ALTER TABLE `kartu_stok`
+  MODIFY `id_kartu_stok` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `kasir`
+--
+ALTER TABLE `kasir`
+  MODIFY `id_kasir` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `perusahaan`
@@ -274,21 +355,30 @@ ALTER TABLE `stok_bulanan`
 -- Constraints for table `detail_transaksi`
 --
 ALTER TABLE `detail_transaksi`
-  ADD CONSTRAINT `detail_transaksi_ibfk_1` FOREIGN KEY (`no_transaksi`) REFERENCES `transaksi` (`no_transaksi`),
-  ADD CONSTRAINT `fk_detail_kode_produk` FOREIGN KEY (`kode_produk`) REFERENCES `produk` (`kode_produk`);
+  ADD CONSTRAINT `fk_detail_produk` FOREIGN KEY (`kode_produk`) REFERENCES `produk` (`kode_produk`),
+  ADD CONSTRAINT `fk_detail_transaksi` FOREIGN KEY (`no_transaksi`) REFERENCES `transaksi` (`no_transaksi`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `kartu_stok`
+--
+ALTER TABLE `kartu_stok`
+  ADD CONSTRAINT `fk_kartu_perusahaan` FOREIGN KEY (`id_perusahaan`) REFERENCES `perusahaan` (`id_perusahaan`),
+  ADD CONSTRAINT `fk_kartu_produk` FOREIGN KEY (`kode_produk`) REFERENCES `produk` (`kode_produk`),
+  ADD CONSTRAINT `fk_kartu_transaksi` FOREIGN KEY (`no_transaksi`) REFERENCES `transaksi` (`no_transaksi`) ON DELETE SET NULL;
 
 --
 -- Constraints for table `stok_bulanan`
 --
 ALTER TABLE `stok_bulanan`
-  ADD CONSTRAINT `stok_bulanan_ibfk_1` FOREIGN KEY (`id_perusahaan`) REFERENCES `perusahaan` (`id_perusahaan`),
-  ADD CONSTRAINT `stok_bulanan_ibfk_2` FOREIGN KEY (`kode_produk`) REFERENCES `produk` (`kode_produk`);
+  ADD CONSTRAINT `fk_stok_perusahaan` FOREIGN KEY (`id_perusahaan`) REFERENCES `perusahaan` (`id_perusahaan`),
+  ADD CONSTRAINT `fk_stok_produk` FOREIGN KEY (`kode_produk`) REFERENCES `produk` (`kode_produk`);
 
 --
 -- Constraints for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  ADD CONSTRAINT `transaksi_ibfk_1` FOREIGN KEY (`id_perusahaan`) REFERENCES `perusahaan` (`id_perusahaan`);
+  ADD CONSTRAINT `fk_transaksi_kasir` FOREIGN KEY (`id_kasir`) REFERENCES `kasir` (`id_kasir`),
+  ADD CONSTRAINT `fk_transaksi_perusahaan` FOREIGN KEY (`id_perusahaan`) REFERENCES `perusahaan` (`id_perusahaan`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
