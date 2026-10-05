@@ -1,5 +1,5 @@
 # mysqltest
-simply the title explains it
+maybe life isn't about letting something doing your work
 > made by nell
 > for mr. ega
 
